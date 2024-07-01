@@ -11,56 +11,56 @@ export const CompanyPetition = () => {
   const { id } = useParams();
   const ApprovedHandler = async () => {
     try {
-      console.log(id);
+      const res = await fetch(
+        `http://localhost:5000/api/company/${id}/${"join"}`,
+        {
+          method: "put",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.status === 200) {
+        window.location.href = "/companies";
+      }
     } catch (error) {
       console.log(error);
     }
   };
   const DeclineHandler = async () => {
     try {
-      console.log(id);
+      const res = await fetch(
+        `http://localhost:5000/api/company/${id}/${"decline"}`,
+        {
+          method: "put",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.status === 200) {
+        window.location.href = "/companies";
+      }
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <div className="flex flex-col">
-      <div className="bg-[#11CE7C] flex flex-col items-center pb-10 pt-3 gap-4">
-        <div className="w-full flex items-center justify-end pr-3 gap-1">
+      <div className="bg-[#FFFFFF] flex flex-col items-center py-3 gap-4 shadow sticky top-0">
+        <div className="w-full flex items-center justify-center pr-3 gap-1">
           <button
-            className="bg-[#FF0000] px-5 py-1 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
+            className="bg-[#dd3030] px-5 py-2 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
             onClick={ApprovedHandler}
           >
             Decline
           </button>
           <button
-            className="bg-[#0000FF] px-5 py-1 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
+            className="bg-[#359635] px-5 py-2 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
             onClick={DeclineHandler}
           >
             Accepted
           </button>
-        </div>
-        <div className="flex flex-col gap-1 items-center">
-          <h1 className="text-2xl font-semibold max-sm:text-xl">
-            Modern Day Slavery
-          </h1>
-          <p className="max-sm:text-xs">
-            Demand All Fortune 1000 Companies to Take a Stand Against Modern Day
-            Slavery (MDS)
-          </p>
-        </div>
-        <div className="w-2/4 max-sm:w-full">
-          <img src={img1} alt="bg" className="w-full rounded-md" />
-          <div className="flex items-center justify-between">
-            <div className="flex gap-2 max-sm:text-xs">
-              <span className="font-semibold">Started</span>
-              <span>June 29, 2024</span>
-            </div>
-            <div className="flex gap-2 max-sm:text-xs">
-              <span className="font-semibold">Petition to</span>
-              <span>PurposeBlack Foundation</span>
-            </div>
-          </div>
         </div>
       </div>
       <div className="p-10 flex flex-col items-center justify-center gap-3">
@@ -228,11 +228,11 @@ export const CompanyPetition = () => {
           <img src={img5} alt="img6" />
         </div>
       </div>
-      <div className="px-20 max-sm:px-10">
+      <div className="px-20 max-sm:px-10 grid grid-cols-3 gap-5">
         <iframe
-          width="100%"
-          height="615"
-          className="max-sm:h-[300px]"
+          width="760"
+          height="415"
+          className="max-sm:w-full max-sm:h-[300px] col-span-2"
           src="https://www.youtube.com/embed/psEQD7-X6A8?si=lF_4i-ngKWV8mQqQ"
           title="YouTube video player"
           frameborder="0"
@@ -240,9 +240,7 @@ export const CompanyPetition = () => {
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
         ></iframe>
-      </div>
-      <div className="grid grid-cols-2 gap-5 px-20 py-5 max-sm:px-10 max-sm:grid-cols-1">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 col-span-1">
           <p>Thank You for being part of this noble journey.</p>
           <p>STOP Modern Day Initiative Team</p>
           <p>Organizer Information </p>
@@ -256,6 +254,8 @@ export const CompanyPetition = () => {
           <p>Campaign 100+</p>
           <p>Invest in Poverty Initiative</p>
         </div>
+      </div>
+      <div className="grid grid-cols-2 gap-5 px-20 py-5 max-sm:px-10 max-sm:grid-cols-1">
         <div className="flex flex-col gap-2">
           <p>2600 Virginia Ave MW</p>
           <p>Washington DC, 20037</p>

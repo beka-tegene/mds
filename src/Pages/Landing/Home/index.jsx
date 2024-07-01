@@ -11,20 +11,44 @@ export const Hero = () => {
       setIsModalOpen(!isModalOpen);
     }
   };
-  const submitHandler = (e) => {
+  
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, emailName);
+    try {
+      const res = await fetch(
+        "http://localhost:5000/api/petition/create-user-petition",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: emailName,
+            fullName: `${firstName} ${lastName}`,
+          }),
+        }
+      );
+      if (res.status === 200) {
+        window.location.href = "/complete-support";
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="bg-[#29C87B] h-[80vh] grid grid-cols-3 ">
       <div className=" col-span-2   text-white flex flex-col justify-center items-start px-32 max-sm:px-7">
         <div className="flex flex-col justify-center items-start gap-10">
           <div className="flex flex-col gap-2">
-            <h1 className="text-5xl font-bold max-sm:text-2xl">Speak Up to Change</h1>
-            <p className="max-sm:text-xs">When “Ordinary People” Speak Up, They Can Change the World</p>
+            <h1 className="text-5xl font-bold max-sm:text-2xl">
+              Speak Up to Change
+            </h1>
+            <p className="max-sm:text-xs">
+              When “Ordinary People” Speak Up, They Can Change the World
+            </p>
           </div>
           <button
-            className="bg-[#F39C12] px-6 py-2 shadow-md font-medium rounded-full text-lg max-sm:text-xs" 
+            className="bg-[#F39C12] px-6 py-2 shadow-md font-medium rounded-full text-lg max-sm:text-xs"
             onClick={() => setIsModalOpen(true)}
           >
             Start a Petition

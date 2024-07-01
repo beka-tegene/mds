@@ -19,9 +19,28 @@ export const Navigation = () => {
       setIsModalOpen1(!isModalOpen1);
     }
   };
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, emailName);
+    try {
+      const res = await fetch(
+        "http://localhost:5000/api/petition/create-user-petition",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: emailName,
+            fullName: `${firstName} ${lastName}`,
+          }),
+        }
+      );
+      if (res.status === 200) {
+        window.location.href = "/complete-support";
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <nav className="grid grid-cols-7 py-4 px-7 bg-[#29C87B] text-white items-center max-sm:flex max-sm:justify-between">
@@ -41,7 +60,7 @@ export const Navigation = () => {
           </a>
         </li>
         <li>
-          <NavLink to="/comment">Comment</NavLink>
+        <NavLink to={"/companies"}>All Company</NavLink>
         </li>
       </ul>
       <div className=" col-span-2 flex items-center justify-center max-sm:hidden ">
@@ -68,18 +87,24 @@ export const Navigation = () => {
             </div>
             <ul className="flex flex-col gap-2 pb-4">
               <li>
-                <NavLink to={'/'}>Home</NavLink>
+                <NavLink to={"/"}>Home</NavLink>
               </li>
               <li>
-                <NavLink onClick={() => setIsModalOpen(true)}>Start a Petition</NavLink>
+                <NavLink onClick={() => setIsModalOpen(true)}>
+                  Start a Petition
+                </NavLink>
               </li>
               <li>
-                <NavLink to={'/comment'}>Comment</NavLink>
+                <NavLink to={"/companies"}>All Company</NavLink>
               </li>
             </ul>
             <div className="flex flex-col gap-3">
-              <button className="bg-[#F39C12] px-6 py-2 shadow-md font-medium rounded-full text-lg text-white">Sign in</button>
-              <button className="border-[#F39C12] border text-[#F39C12] px-6 py-2 shadow-md font-medium rounded-full text-lg">Sign up</button>
+              <button className="bg-[#F39C12] px-6 py-2 shadow-md font-medium rounded-full text-lg text-white">
+                Sign in
+              </button>
+              <button className="border-[#F39C12] border text-[#F39C12] px-6 py-2 shadow-md font-medium rounded-full text-lg">
+                Sign up
+              </button>
             </div>
           </div>
         </div>

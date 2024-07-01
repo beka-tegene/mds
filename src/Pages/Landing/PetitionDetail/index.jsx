@@ -195,11 +195,11 @@ export const PetitionDetail = () => {
           <img src={img5} alt="img6" />
         </div>
       </div>
-      <div className="px-20 max-sm:px-10">
+      <div className="px-20 max-sm:px-10 grid grid-cols-3 gap-5">
         <iframe
-          width="100%"
-          height="615"
-          className="max-sm:h-[300px]"
+          width="760"
+          height="415"
+          className="max-sm:w-full max-sm:h-[300px] col-span-2"
           src="https://www.youtube.com/embed/psEQD7-X6A8?si=lF_4i-ngKWV8mQqQ"
           title="YouTube video player"
           frameborder="0"
@@ -207,9 +207,7 @@ export const PetitionDetail = () => {
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
         ></iframe>
-      </div>
-      <div className="grid grid-cols-2 gap-5 px-20 py-5 max-sm:px-10 max-sm:grid-cols-1">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 col-span-1">
           <p>Thank You for being part of this noble journey.</p>
           <p>STOP Modern Day Initiative Team</p>
           <p>Organizer Information </p>
@@ -223,6 +221,8 @@ export const PetitionDetail = () => {
           <p>Campaign 100+</p>
           <p>Invest in Poverty Initiative</p>
         </div>
+      </div>
+      <div className="grid grid-cols-2 gap-5 px-20 py-5 max-sm:px-10 max-sm:grid-cols-1">
         <div className="flex flex-col gap-2">
           <p>2600 Virginia Ave MW</p>
           <p>Washington DC, 20037</p>
