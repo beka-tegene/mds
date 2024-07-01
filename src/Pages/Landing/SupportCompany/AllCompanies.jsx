@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navigation } from "../../../Components/Navigation";
 import { IoMdSearch } from "react-icons/io";
+import { BASE_URL } from "../../../Utils/constants";
 
 const AllCompanies = () => {
   const itemsPerPage = 6;
@@ -11,7 +12,7 @@ const AllCompanies = () => {
   const [filteredCompanies, setFilteredCompanies] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/company/")
+    fetch(`${BASE_URL}api/company/`)
       .then((response) => response.json())
       .then((data) => {
         setCompanies(data);

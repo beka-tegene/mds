@@ -10,15 +10,12 @@ export const CompanyPetition = () => {
 
   const ApprovedHandler = async () => {
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/company/${id}/${"join"}`,
-        {
-          method: "put",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(`${BASE_URL}api/company/${id}/${"join"}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (res.status === 200) {
         window.location.href = "/companies";
       }
@@ -29,15 +26,12 @@ export const CompanyPetition = () => {
 
   const DeclineHandler = async () => {
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/company/${id}/${"decline"}`,
-        {
-          method: "put",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(`${BASE_URL}api/company/${id}/${"decline"}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (res.status === 200) {
         window.location.href = "/companies";
       }

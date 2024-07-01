@@ -1,6 +1,7 @@
 import { useState } from "react";
 import bg from "../../../assets/img.png";
 import { IoMdHand } from "react-icons/io";
+import { BASE_URL } from "../../../Utils/constants";
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -15,19 +16,16 @@ export const Hero = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/petition/create-user-petition",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: emailName,
-            fullName: `${firstName} ${lastName}`,
-          }),
-        }
-      );
+      const res = await fetch(`${BASE_URL}api/petition/create-user-petition`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailName,
+          fullName: `${firstName} ${lastName}`,
+        }),
+      });
       if (res.status === 201) {
         window.location.href = "/complete-support";
       }

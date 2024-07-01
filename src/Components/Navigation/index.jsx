@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoMdHand } from "react-icons/io";
 import { MdMenu } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { BASE_URL } from "../../Utils/constants";
 
 export const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -9,6 +10,7 @@ export const Navigation = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailName, setEmailName] = useState("");
+
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) {
       setIsModalOpen(!isModalOpen);
@@ -22,19 +24,16 @@ export const Navigation = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/petition/create-user-petition",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: emailName,
-            fullName: `${firstName} ${lastName}`,
-          }),
-        }
-      );
+      const res = await fetch(`${BASE_URL}api/petition/create-user-petition`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailName,
+          fullName: `${firstName} ${lastName}`,
+        }),
+      });
       if (res.status === 201) {
         window.location.href = "/complete-support";
       }
