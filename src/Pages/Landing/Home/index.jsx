@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import bg from "../../../assets/img.png";
 import { IoMdHand } from "react-icons/io";
 export const Hero = () => {
@@ -11,7 +11,7 @@ export const Hero = () => {
       setIsModalOpen(!isModalOpen);
     }
   };
-  
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +28,7 @@ export const Hero = () => {
           }),
         }
       );
-      if (res.status === 200) {
+      if (res.status === 201) {
         window.location.href = "/complete-support";
       }
     } catch (error) {
@@ -85,7 +85,7 @@ export const Hero = () => {
               </span>
             </div>
             <form
-              onClick={submitHandler}
+              onSubmit={submitHandler}
               className="flex flex-col w-full gap-2"
             >
               <h1 className="text-xl font-semibold text-center">
@@ -137,14 +137,14 @@ export const Hero = () => {
               </div>
             </form>
             <p className="text-xs mt-2">
-              By signing, you accept Change.org’s{" "}
-              <a href="" className="text-blue-700">
+              By signing, you accept Stop MDS{" "}
+              <span className="text-blue-700 hover:underline cursor-pointer">
                 Terms of Service
-              </a>{" "}
+              </span>{" "}
               and{" "}
-              <a href="" className="text-blue-700">
+              <span className="text-blue-700 hover:underline cursor-pointer">
                 Privacy Policy
-              </a>
+              </span>
               , and agree to receive occasional emails about campaigns on
               Change.org. You can unsubscribe at any time.
             </p>

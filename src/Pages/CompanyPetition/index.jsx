@@ -1,5 +1,3 @@
-import React from "react";
-import img1 from "../../assets/image.jpg";
 import img2 from "../../assets/image.jpeg";
 import img3 from "../../assets/images.jpeg";
 import img4 from "../../assets/img.jpeg";
@@ -9,6 +7,7 @@ import img7 from "../../assets/i.jpeg";
 import { useParams } from "react-router-dom";
 export const CompanyPetition = () => {
   const { id } = useParams();
+
   const ApprovedHandler = async () => {
     try {
       const res = await fetch(
@@ -27,6 +26,7 @@ export const CompanyPetition = () => {
       console.log(error);
     }
   };
+
   const DeclineHandler = async () => {
     try {
       const res = await fetch(
@@ -51,13 +51,13 @@ export const CompanyPetition = () => {
         <div className="w-full flex items-center justify-center pr-3 gap-1">
           <button
             className="bg-[#dd3030] px-5 py-2 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
-            onClick={ApprovedHandler}
+            onClick={DeclineHandler}
           >
             Decline
           </button>
           <button
             className="bg-[#359635] px-5 py-2 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
-            onClick={DeclineHandler}
+            onClick={ApprovedHandler}
           >
             Accepted
           </button>
@@ -230,7 +230,7 @@ export const CompanyPetition = () => {
       </div>
       <div className="px-20 max-sm:px-10 grid grid-cols-3 gap-5">
         <iframe
-          width="760"
+          width="700"
           height="415"
           className="max-sm:w-full max-sm:h-[300px] col-span-2"
           src="https://www.youtube.com/embed/psEQD7-X6A8?si=lF_4i-ngKWV8mQqQ"
