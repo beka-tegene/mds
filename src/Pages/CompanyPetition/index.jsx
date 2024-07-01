@@ -59,7 +59,7 @@ export const CompanyPetition = () => {
             className="bg-[#359635] px-5 py-2 text-white font-medium rounded-md hover:scale-[.98] active:scale-[1.01] border-none"
             onClick={ApprovedHandler}
           >
-            Accepted
+            Accept
           </button>
         </div>
       </div>

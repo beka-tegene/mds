@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import brand1 from "../../../assets/images.png";
-import brand2 from "../../../assets/images (1).png";
-import brand3 from "../../../assets/1-mobile.jpg";
 import { Link } from "react-router-dom";
 
 export const SupportCompany = () => {
@@ -22,13 +19,11 @@ export const SupportCompany = () => {
       </div>
 
       <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-4 w-4/5">
-        {companies.slice(0, 6).map((company, index) => (
+        {companies.slice(0, 6).map((company) => (
           <div className="shadow-md" key={company._id}>
             <div className="w-full h-60 overflow-hidden">
               <img
-                src={
-                  index % 2 === 0 ? brand1 : index % 3 === 0 ? brand2 : brand3
-                }
+                src={company.companyPicture.url}
                 alt="brand"
                 className="h-full w-full object-contain"
               />

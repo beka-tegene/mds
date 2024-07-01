@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import brand1 from "../../../assets/images.png";
-import brand2 from "../../../assets/images (1).png";
-import brand3 from "../../../assets/1-mobile.jpg";
 import { Navigation } from "../../../Components/Navigation";
 import { IoMdSearch } from "react-icons/io";
 
@@ -118,20 +115,14 @@ const AllCompanies = () => {
           </div>
         ) : (
           <div className="flex flex-wrap gap-5 justify-center">
-            {filteredCompanies.slice(startIdx, endIdx).map((company, index) => (
+            {filteredCompanies.slice(startIdx, endIdx).map((company) => (
               <div
                 className="shadow-md rounded-lg w-1/4 h-80"
                 key={company._id}
               >
                 <div className="w-full h-40 overflow-hidden">
                   <img
-                    src={
-                      index % 2 === 0
-                        ? brand1
-                        : index % 3 === 0
-                        ? brand2
-                        : brand3
-                    }
+                    src={company.companyPicture.url}
                     alt="brand"
                     className="h-full w-full object-contain"
                   />
