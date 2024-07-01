@@ -1,4 +1,3 @@
-import React from "react";
 import img1 from "../../../assets/image.jpg";
 import img2 from "../../../assets/image.jpeg";
 import img3 from "../../../assets/images.jpeg";
@@ -6,13 +5,15 @@ import img4 from "../../../assets/img.jpeg";
 import img5 from "../../../assets/bc.jpeg";
 import img6 from "../../../assets/imgs.jpeg";
 import img7 from "../../../assets/i.jpeg";
+
 export const PetitionDetail = () => {
-  
   return (
     <div className="flex flex-col">
       <div className="bg-[#11CE7C] flex flex-col items-center p-10 gap-4">
         <div className="flex flex-col gap-1 items-center">
-          <h1 className="text-2xl font-semibold max-sm:text-xl">Modern Day Slavery</h1>
+          <h1 className="text-2xl font-semibold max-sm:text-xl">
+            Modern Day Slavery
+          </h1>
           <p className="max-sm:text-xs">
             Demand All Fortune 1000 Companies to Take a Stand Against Modern Day
             Slavery (MDS)
@@ -33,7 +34,9 @@ export const PetitionDetail = () => {
         </div>
       </div>
       <div className="p-10 flex flex-col items-center justify-center gap-3">
-        <h1 className="text-2xl font-semibold max-sm:text-xl">Why this petition matters</h1>
+        <h1 className="text-2xl font-semibold max-sm:text-xl">
+          Why this petition matters
+        </h1>
         <div className="flex gap-3 items-center">
           <div className="w-12 h-12 rounded-full overflow-hidden max-sm:w-8 max-sm:h-8">
             <img src={img2} alt="img2" className="w-full" />
@@ -197,7 +200,7 @@ export const PetitionDetail = () => {
       </div>
       <div className="px-20 max-sm:px-10 grid grid-cols-3 gap-5">
         <iframe
-          width="760"
+          width="700"
           height="415"
           className="max-sm:w-full max-sm:h-[300px] col-span-2"
           src="https://www.youtube.com/embed/psEQD7-X6A8?si=lF_4i-ngKWV8mQqQ"
@@ -229,18 +232,17 @@ export const PetitionDetail = () => {
           <p>Tel: +1 (202) 735-4262</p>
           <p>Email: info@ipimembership.com</p>
           <p>
-            Website: <a href="" className=" text-blue-700">https://ipiuniverse.com/</a>
+            Website:{" "}
+            <a href="" className=" text-blue-700">
+              https://ipiuniverse.com/
+            </a>
           </p>
         </div>
       </div>
       <div className="flex flex-col items-center justify-center px-20 max-sm:px-10">
-        <img src={img6} alt="img" className="w-3/4"/>
-        <img src={img7} alt="img" className="w-2/4"/>
+        <img src={img6} alt="img" className="w-3/4" />
+        <img src={img7} alt="img" className="w-2/4" />
       </div>
-
-
-
-     
     </div>
   );
 };

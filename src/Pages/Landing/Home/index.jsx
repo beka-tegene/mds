@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import bg from "../../../assets/img.png";
 import { IoMdHand } from "react-icons/io";
+import { BASE_URL } from "../../../Utils/constants";
 export const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -11,24 +12,21 @@ export const Hero = () => {
       setIsModalOpen(!isModalOpen);
     }
   };
-  
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/petition/create-user-petition",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: emailName,
-            fullName: `${firstName} ${lastName}`,
-          }),
-        }
-      );
-      if (res.status === 200) {
+      const res = await fetch(`${BASE_URL}api/petition/create-user-petition`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailName,
+          fullName: `${firstName} ${lastName}`,
+        }),
+      });
+      if (res.status === 201) {
         window.location.href = "/complete-support";
       }
     } catch (error) {
@@ -85,7 +83,7 @@ export const Hero = () => {
               </span>
             </div>
             <form
-              onClick={submitHandler}
+              onSubmit={submitHandler}
               className="flex flex-col w-full gap-2"
             >
               <h1 className="text-xl font-semibold text-center">
@@ -137,14 +135,14 @@ export const Hero = () => {
               </div>
             </form>
             <p className="text-xs mt-2">
-              By signing, you accept Change.org’s{" "}
-              <a href="" className="text-blue-700">
+              By signing, you accept Stop MDS{" "}
+              <span className="text-blue-700 hover:underline cursor-pointer">
                 Terms of Service
-              </a>{" "}
+              </span>{" "}
               and{" "}
-              <a href="" className="text-blue-700">
+              <span className="text-blue-700 hover:underline cursor-pointer">
                 Privacy Policy
-              </a>
+              </span>
               , and agree to receive occasional emails about campaigns on
               Change.org. You can unsubscribe at any time.
             </p>

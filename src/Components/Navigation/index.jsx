@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoMdHand } from "react-icons/io";
 import { MdMenu } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { BASE_URL } from "../../Utils/constants";
 
 export const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -9,6 +10,7 @@ export const Navigation = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailName, setEmailName] = useState("");
+
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) {
       setIsModalOpen(!isModalOpen);
@@ -22,20 +24,17 @@ export const Navigation = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        "http://localhost:5000/api/petition/create-user-petition",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: emailName,
-            fullName: `${firstName} ${lastName}`,
-          }),
-        }
-      );
-      if (res.status === 200) {
+      const res = await fetch(`${BASE_URL}api/petition/create-user-petition`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailName,
+          fullName: `${firstName} ${lastName}`,
+        }),
+      });
+      if (res.status === 201) {
         window.location.href = "/complete-support";
       }
     } catch (error) {
@@ -60,7 +59,7 @@ export const Navigation = () => {
           </a>
         </li>
         <li>
-        <NavLink to={"/companies"}>All Company</NavLink>
+          <NavLink to={"/companies"}>All Company</NavLink>
         </li>
       </ul>
       <div className=" col-span-2 flex items-center justify-center max-sm:hidden ">
@@ -135,7 +134,7 @@ export const Navigation = () => {
               </span>
             </div>
             <form
-              onClick={submitHandler}
+              onSubmit={submitHandler}
               className="flex flex-col w-full gap-2"
             >
               <h1 className="text-xl font-semibold text-center">
@@ -187,14 +186,14 @@ export const Navigation = () => {
               </div>
             </form>
             <p className="text-xs mt-2">
-              By signing, you accept Change.org’s{" "}
-              <a href="" className="text-blue-700">
+              By signing, you accept Stop MDS{" "}
+              <span className="text-blue-700 hover:underline cursor-pointer">
                 Terms of Service
-              </a>{" "}
+              </span>{" "}
               and{" "}
-              <a href="" className="text-blue-700">
+              <span className="text-blue-700 hover:underline cursor-pointer">
                 Privacy Policy
-              </a>
+              </span>
               , and agree to receive occasional emails about campaigns on
               Change.org. You can unsubscribe at any time.
             </p>
